@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { navigateTo } from "../utils/navigate";
 import { useEffect, useState } from "react";
-import { LoginForm, SignUpForm } from "../components/ui";
+import { LoginForm } from "../components/ui";
 import { login as loginUser } from "../controllers/loginController";
-import { getDeviceKeys } from "../utils/crypto";
 import { verifyTOTP } from "../utils/api";
 
 interface TOTPInputProps{
@@ -12,7 +11,6 @@ interface TOTPInputProps{
 }
 
 function Login(){
-    const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [showTOTPInput, setTOTPInput] = useState(false);
     const [userId, setUserId] = useState<string | null>(null);
@@ -25,7 +23,6 @@ function Login(){
     }
 
     const loginButtonClicked = async ()=>{
-        setLoading(true);
         setMessage("");
 
         const email = (document.getElementById("email") as HTMLInputElement).value;

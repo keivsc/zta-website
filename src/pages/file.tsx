@@ -18,7 +18,8 @@ interface FileItem {
 
 
 function getOwner(fileId: string) {
-  return "bob";
+    console.log(fileId);
+    return "bob";
 }
 
 export default function FilePage() {

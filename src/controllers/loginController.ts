@@ -1,6 +1,4 @@
 import { loginUser } from "../utils/api"
-import { bufferToHex, generateEncryptionKeyPair, generateSigningKeyPair, hexToBuffer } from "../utils/crypto";
-import { LocalDB } from "../utils/localDB";
 
 export async function login(email: string, password: string, retries = 0){
     const payload = {email, password};

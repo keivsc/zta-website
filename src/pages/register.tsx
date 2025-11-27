@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { register as registerUser } from "../controllers/registerController";
 import { navigateTo } from "../utils/navigate";
 import { QRCodeSVG } from "qrcode.react";
 import { useNavigate } from "react-router-dom";
-import { LoginForm, SignUpForm } from "../components/ui";
+import { SignUpForm } from "../components/ui";
 
 interface TOTPRegisterProps {
   otpAuthUrl: string;
@@ -16,13 +16,11 @@ function Register() {
       navigateTo(navigate, '/login');
     }
 
-    const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [showTOTP, setShowTOTP] = useState(false);
     const [OTPauthURL, setOtpAuthUrl] = useState<string | null>(null);
 
     const registerButtonClicked = async () => {
-    setLoading(true);
     setMessage("");
 
     const firstName = (document.getElementById("firstname") as HTMLInputElement).value;
@@ -48,17 +46,7 @@ function Register() {
     } catch (err) {
         console.error(err);
         setMessage("Unexpected error occurred.");
-    } finally {
-        setLoading(false);
     }
-    };
-
-
-    const showPasswordButtonClicked = () => {
-      const input = document.getElementById('password') as HTMLInputElement | null;
-      if (input) {
-          input.type = input.type === 'password' ? 'text' : 'password'; // toggle
-      }
     };
 
     if (showTOTP && OTPauthURL) {

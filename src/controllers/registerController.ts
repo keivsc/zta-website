@@ -1,4 +1,4 @@
-import { get, post, registerUser } from "../utils/api";
+import { registerUser } from "../utils/api";
 
 interface registerResult{
     code: number;
